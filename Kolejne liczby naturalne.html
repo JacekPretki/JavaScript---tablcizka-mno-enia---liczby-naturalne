@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Program wypisuje kolejne liczby naturalne z przedziału <a,b></a></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+        <p class="text">Liczby naturalne w zakresie &lta,b&gt</p>
+        <label class="text" for="ZakresDolny">Zakres dolny</label>
+        <input class="text" type="text" id="a" placeholder="Zakres dolny">
+        <label class="text" for="ZakresGórny">Zakres górny</label>
+        <input class="text" type="text" id="b" placeholder="Zakres górny">
+        <button class="BUTTON_OZT" onclick="generujLiczby();">Generuj!</button>
+        
+    
+    <p class="text" id="generowanie"></p>
+    </div>
+    <script>
+            var r="";
+            function generujLiczby()
+            {
+            document.getElementById("generowanie").innerHTML="";
+            var a = parseInt(document.getElementById("a").value);
+            var b = parseInt(document.getElementById("b").value);
+            
+            
+            while (a<=b){
+                r = r+a+" ";
+                a++;
+            }
+
+            var t = document.getElementById("generowanie");
+            var y = document.createTextNode(r);
+            r="";
+            document.getElementById("a").value="";
+            document.getElementById("b").value="";
+            t.appendChild(y);
+            }
+        </script>
+</body>
+
+</html>

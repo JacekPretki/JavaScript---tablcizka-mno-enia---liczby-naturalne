@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            text-align: center;
+            background-color: beige;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tabliczka mnożenia</h1>
+    <p id="wynik"></p>
+    <form>
+
+        <label>Wprowadź podstawę systemu liczbowego</label>
+        <select id="selektor">
+            <option value="2">2 - dwójkowy</option>
+            <option value="3">3 - trójkowy</option>
+            <option value="4">4 - czwórkowy</option>
+            <option value="5">5 - piątkowy</option>
+            <option value="6">6 - szóstkowy</option>
+            <option value="7">7 - siódemkowy</option>
+            <option value="8">8 - ósemkowy</option>
+            <option value="9">9 - dziewiątkowy</option>
+            <option value="10" selected="selected">10 - dziesiętny</option>
+        </select>
+    </form>
+    <script>
+        document.getElementById("selektor").onchange = zmianaBazy;
+
+        function zmianaBazy()
+        {
+            kalkulator(this.value);
+        }
+    </script>
+    <script>
+        kalkulator(10);
+        function kalkulator(baza) {
+            var kontent = "<table>";
+            for (var i = 0; i < 10; i++) {
+                kontent += "<tr>";
+                for (var j = 0; j < 10; j++) {
+                    kontent += "<td>" + zmienBaze(((i + 1)*(j+1)),baza) + "</td>";
+                }
+                kontent += "</tr>";
+            }
+            document.getElementById("wynik").innerHTML = kontent;
+        }
+        function zmienBaze(liczba, baza) {
+            var wynik = "";
+            while (parseInt(liczba) > 0) {
+                wynik += parseInt(liczba % baza);
+                liczba /= baza;
+            }
+            return odwrocCiag(wynik);
+        }
+        function odwrocCiag(str) {
+            return str.split("").reverse().join("");
+        }
+    </script>
+</body>
+
+</html>
